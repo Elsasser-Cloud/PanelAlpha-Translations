@@ -17,6 +17,8 @@ return [
         "removing-ftp-account" => "Removing FTP account",
         "creating-ftp-account" => "Creating FTP account",
         "creating-temporary-directory" => "Creating temporary directory",
+        "creating-site" => "Creating site",
+        "checking-domain" => "Checking domain",
     ],
     "health-checks" => [
         "server" => [

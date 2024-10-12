@@ -1,5 +1,6 @@
 <?php
 
+use App\Notifications\Admin\Connection\ServerAccountConnectionError;
 use App\Notifications\Admin\DnsZone\CreateADnsRecordFailed;
 use App\Notifications\Admin\DnsZone\DnsRecordsCreateFailed;
 use App\Notifications\Admin\Instance\ImportByUserFailed;
@@ -318,6 +319,10 @@ return [
     ManualImportInstanceFinished::class => [
         "name" => "Manual Import Instance Finished",
         "description" => 'Notification is informing the recipient that the instance manual import by admin has successful.'
+    ],
+    ServerAccountConnectionError::class => [
+        "name" => "Hosting Account Connection Error",
+        "description" => 'Notification is informing the recipient that connection to hosting account has failed.'
     ]
 ];
 
