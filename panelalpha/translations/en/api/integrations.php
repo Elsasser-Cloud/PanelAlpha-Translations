@@ -1,6 +1,11 @@
 <?php
 
 use App\Lib\Integrations\DbIp;
+use App\Lib\Integrations\EmailProvider\MailerSend;
+use App\Lib\Integrations\EmailProvider\Mailgun;
+use App\Lib\Integrations\EmailProvider\Postmark;
+use App\Lib\Integrations\EmailProvider\Smtp;
+use App\Lib\Integrations\EmailProvider\SendGrid;
 use App\Lib\Integrations\GooglePageSpeedInsights;
 use App\Lib\Integrations\Onboarding\Extendify;
 use App\Lib\Integrations\ReportProviders\GoogleAnalytics;
@@ -63,7 +68,7 @@ return [
         ]
     ],
     Extendify::class => [
-        "subtitle" => "Used for Super Quick Onboarding of instance",
+        "subtitle" => "Used for Super Quick Onboarding of instances",
         "description" => "Extendify provides a website-builder-like onboarding experience for your end customers. Empower your hosting customers to create beautiful, professional-looking websites in minutes using the latest AI technologies natively in WordPress.",
         "instruction" => "To use <b>Extendify</b>, please use \"Super Quick Onboarding\" method in your plans.<br>Don't have an account yet? <a href=\"https://extendify.com/pricing/\" target=\"_blank\">Set up your account</a>.",
         "fields" => [
@@ -88,5 +93,84 @@ return [
             ]
         ]
     ],
-];
 
+    //Email Providers
+    Smtp::class => [
+        "title" => "SMTP",
+        "fields" => [
+            "host" => [
+                "label" => "Host",
+                "tooltip" => "Email host refers to the server or hosting provider."
+            ],
+            "port" => [
+                "label" => "Port",
+                "tooltip" => "Email port refers to a specific port dedicated to handling email traffic."
+            ],
+            "encryption" => [
+                "label" => "SSL Type",
+                "tooltip" => "SSL Type refers to the encryption method (SSL or TLS) used to secure the connection between the email client and server.",
+                "options" => [
+                    "none" => "None",
+                    "ssl" => "SSL",
+                    "tls" => "TLS",
+                ]
+            ],
+            "username" => [
+                "label" => "Username",
+                "tooltip" => "Username is a name associated with an email account."
+            ],
+            "password" => [
+                "label" => "Password",
+                "tooltip" => "Email password is a password for authentication and accessing an email account."
+            ]
+        ]
+    ],
+    Postmark::class => [
+        "title" => "Postmark",
+        "fields" => [
+            "token" => [
+                "label" => "Token",
+                "tooltip" => "Postmark token refers to API token used for accessing with the Postmark email delivery service."
+            ],
+        ]
+    ],
+    MailerSend::class => [
+        "title" => "MailerSend",
+        "fields" => [
+            "api_token" => [
+                "label" => "API Token",
+                "tooltip" => "API token is used to authenticate requests made when sending emails."
+            ],
+        ]
+    ],
+    Mailgun::class => [
+        "title" => "Mailgun",
+        "fields" => [
+            "domain" => [
+                "label" => "Domain",
+                "tooltip" => "Enter your Mailgun domain name."
+            ],
+            "secret" => [
+                "label" => "API Key",
+                "tooltip" => "Provide your Mailgun API key for authentication."
+            ],
+            "endpoint" => [
+                "label" => "Region",
+                "tooltip" => "Select your Mailgun region.",
+                "options" => [
+                    "us" => "United States",
+                    "eu" => "European Union",
+                ]
+            ],
+        ]
+    ],
+    SendGrid::class => [
+        "title" => "SendGrid",
+        "fields" => [
+            "api_key" => [
+                "label" => "API Key",
+                "tooltip" => "API Key is used to authenticate requests made when sending emails."
+            ],
+        ]
+    ],
+];
